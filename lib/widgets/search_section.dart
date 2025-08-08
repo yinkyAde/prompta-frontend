@@ -104,10 +104,12 @@ class _SearchSectionState extends State<SearchSection> {
                     GestureDetector(
                       onTap: () {
                         ChatWebService().chat(queryController.text.trim());
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) =>
+                        Navigator.of(context).pushReplacement(
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation, secondaryAnimation) =>
                                 ChatPage(question: queryController.text.trim()),
+                            transitionDuration: Duration.zero,
+                            reverseTransitionDuration: Duration.zero,
                           ),
                         );
                       },
